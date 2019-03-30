@@ -1,0 +1,14 @@
+# Eclipse files
+.classpath
+.project
+
+# Generated files
+/bin/
+/gen/
+/out/
+
+# mac file
+.DS_Store
+
+# settings file
+.settings/
