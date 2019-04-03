@@ -1,0 +1,4 @@
+p = k * q + r
+r = p mod q, r = p - k * q
+d = gcd(p, q) => d|p, d|q => d|(p - k * q) => d|r
+d = gcd(q, r) => gcd(q. p mode q)

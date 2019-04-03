@@ -1,0 +1,4 @@
+a: No keyword "then" in Java.
+b: The expression of "if" should be parentheses.
+c: Correct.
+d: Missing semicolon in if before "else" clause.

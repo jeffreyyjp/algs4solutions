@@ -1,0 +1,16 @@
+1. Print the maximum and minimum numbers.
+Could be implemented as a filter.
+2. Print the median of the numbers.
+Require saving all the values.
+3. Print the kth smallest value, for k less than 100.
+Could be implemented as a filter.
+4. Print the sum of the squares of the numbers.
+Could be implemented as a filter.
+5. Print the average of the N numbers.
+Could be implemented as a filter.
+6. Print the percentage of numbers greater than the average.
+Require saving all the values.
+7. Print the N numbers in increasing order.
+Require saving all the values.
+8. Print the N numbers in random order.
+Could be implemented as a filter.
