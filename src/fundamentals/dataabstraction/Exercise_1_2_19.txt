@@ -1,0 +1,23 @@
+See SmartDate constructor:
+public SmartDate(String date) {
+        String[] fields = date.split("/");
+        int month = Integer.parseInt(fields[0]);
+        int day = Integer.parseInt(fields[1]);
+        int year = Integer.parseInt(fields[2]);
+        if (!isLegal(month, day, year))
+            throw new IllegalArgumentException(month + "/" + day + "/" + year + " is illegal!");
+
+        value = year * 512 + month * 32 + day;
+    }
+
+
+See Transaction constructor:
+public Transaction(String transaction) {
+        String[] data = transaction.split("\\s+");
+        who = data[0];
+        when = new SmartDate(data[1]);
+        amount = Double.parseDouble(data[2]);
+
+        if (Double.isNaN(amount) || Double.isInfinite(amount))
+            throw new IllegalArgumentException("Amount cannot be NaN or infinite");
+    }

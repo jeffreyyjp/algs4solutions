@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class SmartDate {
 
+    private static final int[] DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private final int value;
 
     public SmartDate(int m, int d, int y) {
@@ -13,14 +14,27 @@ public class SmartDate {
         value = y * 512 + m * 32 + d;
     }
 
-    private boolean isLegal(int m, int d, int y) {
-        int[] daysOfMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        if (m <= 0 || d <= 0 || y <= 0) return false;
-        if (m > 12) return false;
-        if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)
-            daysOfMonth[2] = 29;
+    public SmartDate(String date) {
+        String[] fields = date.split("/");
+        int month = Integer.parseInt(fields[0]);
+        int day = Integer.parseInt(fields[1]);
+        int year = Integer.parseInt(fields[2]);
+        if (!isLegal(month, day, year))
+            throw new IllegalArgumentException(month + "/" + day + "/" + year + " is illegal!");
 
-        return d <= daysOfMonth[m];
+        value = year * 512 + month * 32 + day;
+    }
+
+    private boolean isLegal(int m, int d, int y) {
+        if (m < 1 || m > 12) return false;
+        if (d < 1 || d > DAYS[m]) return false;
+        return m != 2 || d != 29 || isLeapYear(y);
+    }
+
+    private boolean isLeapYear(int y) {
+        if (y % 400 == 0) return true;
+        if (y % 100 == 0) return false;
+        return y % 4 == 0;
     }
 
     public String dayOfTheWeek() {
@@ -46,5 +60,15 @@ public class SmartDate {
 
     public String toString() {
         return month() + "/" + day() + "/" + year();
+    }
+
+    public boolean equals(Object x) {
+        if (this == x) return true;
+        if (x == null) return false;
+        if (this.getClass() != x.getClass()) return false;
+        SmartDate that = (SmartDate) x;
+        if (this.day() != that.day()) return false;
+        if (this.month() != that.month()) return false;
+        return this.year() == that.year();
     }
 }
