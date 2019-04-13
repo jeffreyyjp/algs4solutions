@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class Bag<Item> implements Iterable<Item> {
 
     private Node first;  // first node in list
-    private int N;
+    private int n;
 
     private class Node {
         Item item;
@@ -18,7 +18,7 @@ public class Bag<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.next = oldFirst;
-        N++;
+        n++;
     }
 
     public boolean isEmpty() {
@@ -26,7 +26,7 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
     public Iterator<Item> iterator() {
@@ -47,7 +47,7 @@ public class Bag<Item> implements Iterable<Item> {
         }
 
         public void remove() {
-
+            throw new UnsupportedOperationException();
         }
     }
 }

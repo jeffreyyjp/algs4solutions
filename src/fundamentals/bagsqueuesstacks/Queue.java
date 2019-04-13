@@ -1,12 +1,13 @@
 package fundamentals.bagsqueuesstacks;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Queue<Item> implements Iterable<Item> {
 
     private Node first; // link to least recently added node
     private Node last;  // link to most recently added node
-    private int N;
+    private int n;
 
     private class Node {
         // nested class to define nodes
@@ -19,7 +20,7 @@ public class Queue<Item> implements Iterable<Item> {
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
     public void enqueue(Item item) {
@@ -30,14 +31,15 @@ public class Queue<Item> implements Iterable<Item> {
         last.next = null;
         if (isEmpty()) first = last;
         else oldLast.next = last;
-        N++;
+        n++;
     }
 
     public Item dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = first.item;
         first = first.next;
         if (isEmpty()) last = null;
-        N--;
+        n--;
         return item;
     }
 
@@ -59,7 +61,7 @@ public class Queue<Item> implements Iterable<Item> {
         }
 
         public void remove() {
-
+            throw new UnsupportedOperationException();
         }
     }
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Stack<Item> implements Iterable<Item> {
 
     private Node first; // top of stack (most recently added node)
-    private int N; // number of items
+    private int n; // number of items
 
     private class Node {
         // nested class to define nodes
@@ -21,7 +21,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
     public void push(Item item) {
@@ -30,13 +30,13 @@ public class Stack<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.next = oldFirst;
-        N++;
+        n++;
     }
 
     public Item pop() {
         Item item = first.item;
         first = first.next;
-        N--;
+        n--;
         return item;
     }
 
