@@ -3,21 +3,17 @@ package fundamentals.bagsqueuesstacks;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Queue<Item> implements Iterable<Item> {
-
-    private Node first; // link to least recently added node
-    private Node last;  // link to most recently added node
+public class Steque<Item> implements Iterable<Item> {
+    private Node first;
     private int n;
 
     private class Node {
-        // nested class to define nodes
         Item item;
         Node next;
     }
 
-    public Queue() {
+    public Steque() {
         first = null;
-        last = null;
         n = 0;
     }
 
@@ -29,24 +25,36 @@ public class Queue<Item> implements Iterable<Item> {
         return n;
     }
 
-    public void enqueue(Item item) {
-        // Add item to the end of the list.
-        Node oldLast = last;
-        last = new Node();
-        last.item = item;
-        last.next = null;
-        if (isEmpty()) first = last;
-        else oldLast.next = last;
+    public void push(Item item) {
+        // Add item to top of stack
+        Node oldFirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldFirst;
         n++;
     }
 
-    public Item dequeue() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+    public Item pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;
         first = first.next;
-        if (isEmpty()) last = null;
         n--;
         return item;
+    }
+
+    public void enqueue(Item item) {
+        Node addedNode = new Node();
+        addedNode.item = item;
+        addedNode.next = null;
+        if (first == null) {
+            first = addedNode;
+        } else {
+            Node current = first;
+            while (current.next != null)
+                current = current.next;
+            current.next = addedNode;
+        }
+        n++;
     }
 
     public Iterator<Item> iterator() {

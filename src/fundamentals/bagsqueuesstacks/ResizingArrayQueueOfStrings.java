@@ -5,40 +5,39 @@ import edu.princeton.cs.algs4.StdOut;
 public class ResizingArrayQueueOfStrings {
 
     private String[] a = new String[1];
-    private int N = 0;
+    private int n = 0;
     private int head = 0;
     private int tail = 0;
 
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
     private void resize(int max) {
         String[] temp = new String[max];
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             temp[i] = a[head + i];
         head = 0;
-        tail = N;
+        tail = n;
         a = temp;
     }
 
     public void enqueue(String item) {
         if (tail == a.length)
-            resize(2 * N);
+            resize(2 * n);
         a[tail++] = item;
-        N++;
+        n++;
     }
 
     public String dequeue() {
         String item = a[head];
-        a[head] = null;
-        head++;
-        N--;
-        if (N > 0 && N == a.length / 4)
+        a[head++] = null;
+        n--;
+        if (n > 0 && n == a.length / 4)
             resize(a.length / 2);
 
         return item;

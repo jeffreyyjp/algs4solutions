@@ -12,6 +12,11 @@ public class Bag<Item> implements Iterable<Item> {
         Node next;
     }
 
+    public Bag() {
+        first = null;
+        n = 0;
+    }
+
     public void add(Item item) {
         // same as push() in Stack
         Node oldFirst = first;

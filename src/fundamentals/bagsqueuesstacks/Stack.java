@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
 
@@ -14,6 +15,11 @@ public class Stack<Item> implements Iterable<Item> {
         // nested class to define nodes
         Item item;
         Node next;
+    }
+
+    public Stack() {
+        first = null;
+        n = 0;
     }
 
     public boolean isEmpty() {
@@ -34,6 +40,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public Item pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;
         first = first.next;
         n--;
@@ -62,7 +69,7 @@ public class Stack<Item> implements Iterable<Item> {
         }
 
         public void remove() {
-
+            throw new UnsupportedOperationException();
         }
     }
 

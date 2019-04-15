@@ -13,8 +13,13 @@ public class CircularQueue<Item> implements Iterable<Item> {
         Node next;
     }
 
+    public CircularQueue() {
+        last = null;
+        n = 0;
+    }
+
     public boolean isEmpty() {
-        return n == 0;
+        return last == null;
     }
 
     public int size() {
@@ -35,7 +40,7 @@ public class CircularQueue<Item> implements Iterable<Item> {
     }
 
     public Item dequeue() {
-        if (last == null) throw new NoSuchElementException("Queue underflow");
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = last.next.item;
         if (last.next == last) {
             last = null;
