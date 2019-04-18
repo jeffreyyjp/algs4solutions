@@ -15,12 +15,47 @@ public class Stack<Item> implements Iterable<Item> {
         // nested class to define nodes
         Item item;
         Node next;
+
+        Node() {
+            item = null;
+            next = null;
+        }
+
+        // Nonrecursive solution: copy each node
+        Node(Node x) {
+            this.item = x.item;
+            this.next = x.next;
+        }
+
+        // Recursive solution:
+//        Node(Node x) {
+//            item = x.item;
+//            if (x.next != null) {
+//                next = new Node(x.next)
+//            }
+//        }
     }
 
     public Stack() {
         first = null;
         n = 0;
     }
+
+    // Nonrecursive solution: copy each node
+    public Stack(Stack<Item> s) {
+        if (s.first != null) {
+            first = new Node(s.first);
+            for (Node x = first; x.next != null; x = x.next) {
+                x.next = new Node(x.next);
+            }
+        }
+        n = s.n;
+    }
+
+    // Recursive solution:
+//    public Stack(Stack<Item> s) {
+//        first = new Node(s.first);
+//    }
 
     public boolean isEmpty() {
         return first == null;

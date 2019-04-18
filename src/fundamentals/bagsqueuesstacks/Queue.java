@@ -13,6 +13,17 @@ public class Queue<Item> implements Iterable<Item> {
         // nested class to define nodes
         Item item;
         Node next;
+
+        Node() {
+            item = null;
+            next = null;
+        }
+
+        // Using Node implementation copying.
+//        Node(Node x) {
+//            this.item = x.item;
+//            this.next = x.next;
+//        }
     }
 
     public Queue() {
@@ -20,6 +31,34 @@ public class Queue<Item> implements Iterable<Item> {
         last = null;
         n = 0;
     }
+
+    // Using array implementation copying.
+    public Queue(Queue<Item> q) {
+        if (q.first != null) {
+            int size = q.n;
+            Item[] a = (Item[]) new Object[q.n];
+            for (int i = 0; i < size; i++) {
+                a[i] = q.dequeue();
+            }
+            for (int i = 0; i < size; i++) {
+                q.enqueue(a[i]);
+                this.enqueue(a[i]);
+            }
+        }
+    }
+
+    // Using Node implementation copying.
+//    public Queue(Queue<Item> q) {
+//        if (q.first != null) {
+//            first = new Node(q.first);
+//            Node x = first;
+//            for (; x.next != null; x = x.next) {
+//                x.next = new Node(x.next);
+//            }
+//            last = x;
+//            n = q.n;
+//        }
+//    }
 
     public boolean isEmpty() {
         return first == null;
