@@ -1,6 +1,7 @@
 package fundamentals.bagsqueuesstacks;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ResizingArrayDeque<Item> implements Iterable<Item> {
 
@@ -57,6 +58,7 @@ public class ResizingArrayDeque<Item> implements Iterable<Item> {
     }
 
     public Item popLeft() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = a[head];
         a[head++] = null;
         n--;
@@ -68,6 +70,7 @@ public class ResizingArrayDeque<Item> implements Iterable<Item> {
     }
 
     public Item popRight() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = a[--tail];
         a[tail] = null;
         n--;

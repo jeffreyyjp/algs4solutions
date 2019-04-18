@@ -41,13 +41,15 @@ public class RandomBag<Item> implements Iterable<Item> {
 
     private class ListIterator implements Iterator<Item> {
 
-        private Item[] a = (Item[]) new Object[n];
-        private int i = 0;
+        private Item[] a;
+        private int i;
 
         public ListIterator() {
+            a = (Item[]) new Object[n];
+            i = 0;
             Node current = first;
-            for (int i = 0; i < n; i++) {
-                a[i] = current.item;
+            for (int j = 0; j < n; j++) {
+                a[j] = current.item;
                 current = current.next;
             }
             StdRandom.shuffle(a);

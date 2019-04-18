@@ -2,6 +2,8 @@ package fundamentals.bagsqueuesstacks;
 
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.NoSuchElementException;
+
 public class ResizingArrayQueueOfStrings {
 
     private String[] a = new String[1];
@@ -34,6 +36,7 @@ public class ResizingArrayQueueOfStrings {
     }
 
     public String dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         String item = a[head];
         a[head++] = null;
         n--;

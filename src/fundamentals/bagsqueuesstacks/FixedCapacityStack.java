@@ -3,6 +3,8 @@ package fundamentals.bagsqueuesstacks;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.NoSuchElementException;
+
 public class FixedCapacityStack<Item> {
 
     private Item[] a; // stack entries
@@ -25,6 +27,7 @@ public class FixedCapacityStack<Item> {
     }
 
     public Item pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         return a[--N];
     }
 

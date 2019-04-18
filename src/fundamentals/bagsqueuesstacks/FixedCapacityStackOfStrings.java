@@ -1,5 +1,7 @@
 package fundamentals.bagsqueuesstacks;
 
+import java.util.NoSuchElementException;
+
 public class FixedCapacityStackOfStrings {
 
     private String[] a; // stack entries
@@ -26,6 +28,7 @@ public class FixedCapacityStackOfStrings {
     }
 
     public String pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         return a[--N];
     }
 }
