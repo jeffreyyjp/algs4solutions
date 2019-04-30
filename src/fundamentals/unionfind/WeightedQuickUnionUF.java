@@ -36,7 +36,7 @@ public class WeightedQuickUnionUF {
         // Make smaller root point to larger one.
         if (sz[i] < sz[j]) {
             id[i] = j;
-            sz[j] += sz[j];
+            sz[j] += sz[i];
         } else {
             id[j] = i;
             sz[i] += sz[j];
