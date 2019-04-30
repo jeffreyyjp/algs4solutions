@@ -52,6 +52,16 @@ public class CircularQueue<Item> implements Iterable<Item> {
         return item;
     }
 
+    // Used for exercise1_3_47
+    public void catenation(CircularQueue<Item> other) {
+        if (this.isEmpty() || other.isEmpty())
+            return;
+
+        Node thisFirst = last.next;
+        last.next = other.last.next;
+        other.last.next = thisFirst;
+    }
+
     public Iterator<Item> iterator() {
         return new CircularListIterator();
     }
