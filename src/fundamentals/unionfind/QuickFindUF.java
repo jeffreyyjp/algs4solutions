@@ -7,11 +7,11 @@ public class QuickFindUF {
     private int[] id;  // access to component id (site indexed)
     private int count; // number of components
 
-    public QuickFindUF(int N) {
+    public QuickFindUF(int n) {
         // Initialize component id array.
-        count = N;
-        id = new int[N];
-        for (int i = 0; i < N; i++) {
+        count = n;
+        id = new int[n];
+        for (int i = 0; i < n; i++) {
             id[i] = i;
         }
     }

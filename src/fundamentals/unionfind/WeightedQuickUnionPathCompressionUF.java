@@ -1,12 +1,12 @@
 package fundamentals.unionfind;
 
-public class WeightedQuickUnionUF {
+public class WeightedQuickUnionPathCompressionUF {
 
     private int[] id;    // parent link (site indexed)
     private int[] sz;    // size of component for roots (site indexed)
     private int count;   // number of components
 
-    public WeightedQuickUnionUF(int n) {
+    public WeightedQuickUnionPathCompressionUF(int n) {
         count = n;
         id = new int[n];
         sz = new int[n];
@@ -14,7 +14,6 @@ public class WeightedQuickUnionUF {
             id[i] = i;
             sz[i] = 1;
         }
-
     }
 
     public int count() {
@@ -27,22 +26,30 @@ public class WeightedQuickUnionUF {
 
     public int find(int p) {
         // Follow links to find a root.
-        while (p != id[p]) p = id[p];
-        return p;
+        int root = p;
+        while (root != id[root]) {
+            root = id[root];
+        }
+        while (p != root) {
+            int newp = id[p];
+            id[p] = root;
+            p = newp;
+        }
+        return root;
     }
 
     public void union(int p, int q) {
-        int pRoot = find(p);
-        int qRoot = find(q);
-        if (pRoot == qRoot) return;
+        int i = find(p);
+        int j = find(q);
+        if (i == j) return;
 
         // Make smaller root point to larger one.
-        if (sz[pRoot] < sz[qRoot]) {
-            id[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+        if (sz[i] < sz[j]) {
+            id[i] = j;
+            sz[j] += sz[i];
         } else {
-            id[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+            id[j] = i;
+            sz[i] += sz[j];
         }
         count--;
     }

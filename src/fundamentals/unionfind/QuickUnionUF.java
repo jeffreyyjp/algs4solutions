@@ -5,10 +5,10 @@ public class QuickUnionUF {
     private int[] id;
     private int count;
 
-    public QuickUnionUF(int N) {
-        count = N;
-        id = new int[N];
-        for (int i = 0; i < N; i++) id[i] = i;
+    public QuickUnionUF(int n) {
+        count = n;
+        id = new int[n];
+        for (int i = 0; i < n; i++) id[i] = i;
     }
 
     public int count() {
@@ -28,7 +28,7 @@ public class QuickUnionUF {
         int pRoot = find(p);
         int qRoot = find(q);
         if (pRoot == qRoot) return;
-        id[qRoot] = qRoot;
+        id[pRoot] = qRoot;
         count--;
     }
 }

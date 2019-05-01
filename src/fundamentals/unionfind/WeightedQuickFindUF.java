@@ -5,15 +5,15 @@ public class WeightedQuickFindUF {
     private int[] sz;    // size of component (site indexed)
     private int count; // number of components
 
-    public WeightedQuickFindUF(int N) {
+    public WeightedQuickFindUF(int n) {
         // Initialize component id array.
-        count = N;
-        id = new int[N];
-        for (int i = 0; i < N; i++) {
+        count = n;
+        id = new int[n];
+        for (int i = 0; i < n; i++) {
             id[i] = i;
         }
-        sz = new int[N];
-        for (int i = 0; i < N; i++) sz[i] = 1;
+        sz = new int[n];
+        for (int i = 0; i < n; i++) sz[i] = 1;
     }
 
     public int count() {
@@ -33,7 +33,7 @@ public class WeightedQuickFindUF {
         int pID = find(p);
         int qID = find(q);
 
-        // Nothing to do if p and q are already in the same component.
+        // nothing to do if p and q are already in the same component.
         if (pID == qID) return;
 
         // Rename p's component to q's name.
