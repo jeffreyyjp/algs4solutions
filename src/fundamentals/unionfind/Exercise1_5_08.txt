@@ -1,0 +1,22 @@
+public void union(int p, int q) {
+    if (connected(p, q)) return;
+
+    // Rename p's component to q's name.
+    for (int i = 0; i < id.length; i++) {
+        if (id[i] == id[p]) id[i] = id[q];
+    }
+    count--;
+}
+
+bug: the first id[i] == id[p], id[i] is updated to id[q], so id[p] lost it's original value and was updated to id[q].
+Next check for conditions will always be false.
+
+counterexample:
+0 1 1 2 4 2 6
+p = 1, q = 3
+id[p] = 1
+id[q] = 2
+
+0 != 1, is not updated
+1 == 1, is updated, so id[p] = 2
+1 != 2, is not updated, the index of 2 is not updated.

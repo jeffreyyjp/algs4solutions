@@ -1,0 +1,9 @@
+10^9 sites
+10^6 input pairs
+10^9 per second
+10 per iteration for inner loop
+
+~10^9 initialization, 1 find, ~10^9 union
+
+total seconds ~= 10^9 * 10^6 * 10 / 10^9 = 10^7
+total days = total seconds / (3600 * 24) = 115.7
