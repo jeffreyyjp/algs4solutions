@@ -1,0 +1,3 @@
+Question: Why not use selection sort for h-sorting in shellsort?
+
+Solution: Insertion sort is faster on inputs that are partially-sorted.

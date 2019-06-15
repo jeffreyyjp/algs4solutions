@@ -1,0 +1,3 @@
+Quesiton: Which method runs faster for an array with all keys identical, selection sort or insertion sort?
+
+Solution: Insertion sort runs in linear time when all keys are equal.

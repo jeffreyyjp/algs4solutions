@@ -1,0 +1,3 @@
+For N elements in an array, the maximum number of exchanges involving any particular element during selection sort is N.
+
+The average number of exchanges involving an element is 1

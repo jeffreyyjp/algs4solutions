@@ -1,0 +1,3 @@
+Suppose that we use insertion sort on a randomly ordered array where items have only one of three key values. Is the running time linear, quadratic, or something in between?
+
+Solution. Quadratic.

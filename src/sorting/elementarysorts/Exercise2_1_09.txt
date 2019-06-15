@@ -1,0 +1,9 @@
+original:
+E A S Y S H E L L S O R T Q U E S T I O N
+
+
+13-sort: E A E S S H E L L S O R T Q U S Y T I O N
+
+4-sort:  E A E L L H E O N Q I R S S O S T T U S Y
+
+1-sort:  A E E E H I L L N O O Q R S S S S T T U Y
