@@ -1,8 +1,24 @@
-package sorting.elementarysorts;
+package sorting.mergesort;
 
-public class MergeBU extends Example {
+import sorting.elementarysorts.Example;
+
+public class Merge extends Example {
 
     private static Comparable[] aux;    // auxiliary array for merges
+
+    public static void sort(Comparable[] a) {
+        aux = new Comparable[a.length];
+        sort(a, 0, a.length - 1);
+    }
+
+    public static void sort(Comparable[] a, int lo, int hi) {
+        // Sort a[lo..hi]
+        if (hi <= lo) return;
+        int mid = lo + (hi - lo) / 2;
+        sort(a, lo, mid);         // Sort left half.
+        sort(a, mid + 1, hi);  // Sort right half.
+        merge(a, lo, mid, hi);    // Merge results
+    }
 
     public static void merge(Comparable[] a, int lo, int mid, int hi) {
         // Merge a[lo..mid] with a[mid+1..hi].
@@ -16,17 +32,6 @@ public class MergeBU extends Example {
             else if (j > hi) a[k] = aux[i++];
             else if (less(aux[j], aux[i])) a[k] = aux[j++];
             else a[k] = aux[i++];
-        }
-    }
-
-    public static void sort(Comparable[] a) {
-        // Do lg N passes of pairwise merges.
-        int N = a.length;
-        aux = new Comparable[N];
-        for (int sz = 1; sz < N; sz = sz + sz) {                // sz: subarray size
-            for (int lo = 0; lo < N - sz; lo += sz + sz) {      // lo: subarray index
-                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
-            }
         }
     }
 }

@@ -1,7 +1,11 @@
 package sorting.elementarysorts;
 
 import edu.princeton.cs.algs4.Heap;
+import edu.princeton.cs.algs4.Insertion;
+import edu.princeton.cs.algs4.Merge;
 import edu.princeton.cs.algs4.Quick;
+import edu.princeton.cs.algs4.Selection;
+import edu.princeton.cs.algs4.Shell;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import fundamentals.analysisalgorithms.Stopwatch;
