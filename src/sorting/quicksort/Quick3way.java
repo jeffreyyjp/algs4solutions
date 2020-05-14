@@ -1,9 +1,15 @@
 package sorting.quicksort;
 
+import edu.princeton.cs.algs4.StdRandom;
 import sorting.elementarysorts.Example;
 
 public class Quick3way extends Example
 {
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a);
+        sort(a, 0, a.length - 1);
+    }
+
     private static void sort(Comparable[] a, int lo, int hi)
     {
         if (hi <= lo) return;
