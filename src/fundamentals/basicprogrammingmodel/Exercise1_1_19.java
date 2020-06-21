@@ -25,11 +25,11 @@ public class Exercise1_1_19 {
     public static long optimizeF(int N) {
         if (N == 0) return 0;
         if (N == 1) return 1;
-        int[] temp = new int[N + 1];
-        temp[1] = 1;
+        int[] tmp = new int[N + 1];
+        tmp[1] = 1;
         for (int i = 2; i <= N; i++)
-            temp[i] = temp[i - 1] + temp[i - 2];
-        return temp[N];
+            tmp[i] = tmp[i - 1] + tmp[i - 2];
+        return tmp[N];
     }
 
     public static void main(String[] args) {

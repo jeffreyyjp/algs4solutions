@@ -15,9 +15,9 @@ public class Exercise1_1_36 {
         int N = a.length;
         for (int i = 0; i < N; i++) {
             int r = i + StdRandom.uniform(N - i);
-            int temp = a[i];
+            int tmp = a[i];
             a[i] = a[r];
-            a[r] = temp;
+            a[r] = tmp;
         }
     }
 

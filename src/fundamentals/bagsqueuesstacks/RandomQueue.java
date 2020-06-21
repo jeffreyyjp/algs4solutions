@@ -20,11 +20,11 @@ public class RandomQueue<Item> implements Iterable<Item> {
     }
 
     private void resize(int max) {
-        Item[] temp = (Item[]) new Object[max];
+        Item[] tmp = (Item[]) new Object[max];
         for (int i = 0; i < n; i++) {
-            temp[i] = a[i];
+            tmp[i] = a[i];
         }
-        a = temp;
+        a = tmp;
     }
 
     public void enqueue(Item item) {
@@ -37,14 +37,14 @@ public class RandomQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         int randomIndex = StdRandom.uniform(0, n);
-        Item temp = a[randomIndex];
+        Item tmp = a[randomIndex];
         a[randomIndex] = a[--n];
         a[n] = null;
         if (n > 0 && n == a.length / 4) {
             resize(a.length / 2);
         }
 
-        return temp;
+        return tmp;
     }
 
     public Item sample() {

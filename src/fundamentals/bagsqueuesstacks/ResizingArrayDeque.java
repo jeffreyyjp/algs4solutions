@@ -26,25 +26,25 @@ public class ResizingArrayDeque<Item> implements Iterable<Item> {
     }
 
     private void resize(int max) {
-        Item[] temp = (Item[]) new Object[max];
+        Item[] tmp = (Item[]) new Object[max];
         for (int i = 0; i < n; i++)
-            temp[i] = a[head + i];
+            tmp[i] = a[head + i];
         head = 0;
         tail = n;
-        a = temp;
+        a = tmp;
     }
 
     public void pushLeft(Item item) {
         if (head != 0) {
             a[--head] = item;
         } else {
-            Item[] temp = (Item[]) new Object[(n + 1) * 2];
+            Item[] tmp = (Item[]) new Object[(n + 1) * 2];
             tail = n + 1;
-            temp[head] = item;
+            tmp[head] = item;
             for (int i = 1; i <= n; i++) {
-                temp[i] = a[i - 1];
+                tmp[i] = a[i - 1];
             }
-            a = temp;
+            a = tmp;
         }
         n++;
     }

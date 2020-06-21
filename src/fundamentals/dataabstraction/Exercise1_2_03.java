@@ -26,9 +26,9 @@ public class Exercise1_2_03 {
         double left = StdRandom.uniform(min, max);
         double right = StdRandom.uniform(min, max);
         if (left > right) {
-            double temp = left;
+            double tmp = left;
             left = right;
-            right = temp;
+            right = tmp;
         }
 
         return new Interval1D(left, right);
@@ -87,9 +87,9 @@ public class Exercise1_2_03 {
         StdOut.print("Input max: ");
         double max = StdIn.readDouble();
         if (min > max) {
-            double temp = min;
+            double tmp = min;
             min = max;
-            max = temp;
+            max = tmp;
         }
 
         Interval2D[] intervals = new Interval2D[N];

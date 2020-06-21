@@ -14,7 +14,7 @@ public class Exercise1_1_14 {
     public static int lg(int N) {
         int base = 2;
         int count = -1;
-        for (int temp = 1; temp <= N; temp *= base) {
+        for (int tmp = 1; tmp <= N; tmp *= base) {
             count++;
         }
 

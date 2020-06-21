@@ -9,7 +9,7 @@ public class Exercise1_3_15 {
         String[] result = new String[k + 1];
         Queue<String> queue1 = new Queue<>();
         Queue<String> queue2 = new Queue<>();
-        Queue<String> temp;
+        Queue<String> tmp;
         for (String s : input) {
             queue1.enqueue(s);
         }
@@ -18,9 +18,9 @@ public class Exercise1_3_15 {
                 queue2.enqueue(queue1.dequeue());
             }
             result[i] = queue1.dequeue();
-            temp = queue1;
+            tmp = queue1;
             queue1 = queue2;
-            queue2 = temp;
+            queue2 = tmp;
         }
 
         return result;

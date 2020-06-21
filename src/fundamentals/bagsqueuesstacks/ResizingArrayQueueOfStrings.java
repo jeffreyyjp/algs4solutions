@@ -20,12 +20,12 @@ public class ResizingArrayQueueOfStrings {
     }
 
     private void resize(int max) {
-        String[] temp = new String[max];
+        String[] tmp = new String[max];
         for (int i = 0; i < n; i++)
-            temp[i] = a[head + i];
+            tmp[i] = a[head + i];
         head = 0;
         tail = n;
-        a = temp;
+        a = tmp;
     }
 
     public void enqueue(String item) {

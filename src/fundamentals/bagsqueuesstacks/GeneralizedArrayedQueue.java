@@ -17,11 +17,11 @@ public class GeneralizedArrayedQueue<Item> {
     }
 
     private void resize(int max) {
-        Item[] temp = (Item[]) new Object[max];
+        Item[] tmp = (Item[]) new Object[max];
         for (int i = 0; i < n; i++) {
-            temp[i] = a[i];
+            tmp[i] = a[i];
         }
-        a = temp;
+        a = tmp;
     }
 
     public void insert(Item x) {

@@ -7,9 +7,9 @@ public class Exercise1_1_30 {
 
     public static int gcd(int p, int q) {
         while (q != 0) {
-            int temp = p % q;
+            int tmp = p % q;
             p = q;
-            q = temp;
+            q = tmp;
         }
         return p;
     }

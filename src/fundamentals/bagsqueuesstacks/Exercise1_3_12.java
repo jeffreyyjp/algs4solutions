@@ -5,12 +5,12 @@ import edu.princeton.cs.algs4.StdOut;
 public class Exercise1_3_12 {
 
     public static Stack<String> copy(Stack<String> stack) {
-        Stack<String> temp = new Stack<>();
+        Stack<String> tmp = new Stack<>();
         Stack<String> result = new Stack<>();
         for (String item : stack)
-            temp.push(item);
+            tmp.push(item);
 
-        for (String item : temp) {
+        for (String item : tmp) {
             result.push(item);
         }
 
