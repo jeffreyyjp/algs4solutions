@@ -105,4 +105,73 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (t != null) return t;
         return x;
     }
+
+    public Key select(int k) {
+        return select(root, k).key;
+    }
+
+    private Node select(Node x, int k) {
+        // Return Node containing key of rank k.
+        if (x == null) return null;
+        int t = size(x.left);
+        if (t > k) return select(x.left, k);
+        if (t < k) return select(x.right, k - t - 1);
+        return x;
+    }
+
+    public int rank(Key key) {
+        return rank(root, key);
+    }
+
+    private int rank(Node x, Key key) {
+        // Return number of keys less than x.key in the subtree rooted at x.
+        if (x == null) return 0;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) rank(x.left, key);
+        if (cmp > 0) return 1 + size(x.left) + rank(x.right, key);
+        return size(x.left);
+    }
+
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node x) {
+        if (x.left == null) return x.right;
+        x.left = deleteMin(x.left);
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
+    public void deleteMax() {
+        root = deleteMax(root);
+    }
+
+    private Node deleteMax(Node x) {
+        if (x.right == null) return x.left;
+        x.right = deleteMax(x.right);
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
+    public void delete(Key key) {
+        root = delete(root, key);
+    }
+
+    private Node delete(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if      (cmp < 0) x.left = delete(x.left, key);
+        else if (cmp > 0) x.right = delete(x.right, key);
+        else {
+            if (x.right == null) return x.left;
+            if (x.left == null) return x.right;
+            Node t = x;
+            x = min(t.right);
+            x.right = deleteMin(t.right);
+            x.left = x.left;
+        }
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
 }
