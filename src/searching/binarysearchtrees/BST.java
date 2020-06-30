@@ -169,7 +169,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             Node t = x;
             x = min(t.right);
             x.right = deleteMin(t.right);
-            x.left = x.left;
+            x.left = t.left;
         }
         x.N = size(x.left) + size(x.right) + 1;
         return x;
