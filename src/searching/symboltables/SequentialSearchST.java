@@ -1,7 +1,6 @@
 package searching.symboltables;
 
-import java.util.ArrayList;
-import java.util.List;
+import edu.princeton.cs.algs4.Queue;
 
 public class SequentialSearchST<Key, Value> {
     private Node first;
@@ -42,11 +41,11 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public Iterable<Key> keys() {
-        List<Key> keys = new ArrayList<>();
+        Queue<Key> queue = new Queue<Key>();
         for (Node x = first; x != null; x = x.next) {
-            keys.add(x.key);
+            queue.enqueue(x.key);
         }
-        return keys;
+        return queue;
     }
 
     public void delete(Key key) {
