@@ -1,10 +1,10 @@
 package searching.hashtables;
 
 public class LinearProbingHashST<Key, Value> {
-    private int N;          // number of key-value pairs in the table
-    private int M = 16;     // size of linear-probing table
-    private Key[] keys;     // the keys
-    private Value[] vals;   // the values
+    private int N; // number of key-value pairs in the table
+    private int M = 16; // size of linear-probing table
+    private Key[] keys; // the keys
+    private Value[] vals; // the values
 
     public LinearProbingHashST() {
         keys = (Key[]) new Object[M];
@@ -16,6 +16,14 @@ public class LinearProbingHashST<Key, Value> {
         N = 0;
         keys = (Key[]) new Object[M];
         vals = (Value[]) new Object[M];
+    }
+
+    public int size() {
+        return N;
+    }
+
+    public boolean isEmpty() {
+        return size() == 0;
     }
 
     private int hash(Key key) {
@@ -47,7 +55,16 @@ public class LinearProbingHashST<Key, Value> {
     }
 
     public void put(Key key, Value val) {
-        if (N >= M / 2) resize(2 * M);
+        if (key == null)
+            throw new IllegalArgumentException("first argument to put() is null");
+
+        if (val == null) {
+            delete(key);
+            return;
+        }
+
+        if (N >= M / 2)
+            resize(2 * M);
 
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M) {
@@ -62,7 +79,8 @@ public class LinearProbingHashST<Key, Value> {
     }
 
     public void delete(Key key) {
-        if (!contains(key)) return;
+        if (!contains(key))
+            return;
 
         int i = hash(key);
         while (!key.equals(keys[i]))
@@ -81,7 +99,8 @@ public class LinearProbingHashST<Key, Value> {
             put(keyToRedo, valToRedo);
             i = (i + 1) % M;
         }
-        
-        if (N > 0 && N == M / 8) resize(M / 2);
+
+        if (N > 0 && N == M / 8)
+            resize(M / 2);
     }
 }
