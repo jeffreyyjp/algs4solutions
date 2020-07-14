@@ -1,5 +1,7 @@
 package searching.hashtables;
 
+import edu.princeton.cs.algs4.Queue;
+
 public class LinearProbingHashST<Key, Value> {
     private int N; // number of key-value pairs in the table
     private int M = 16; // size of linear-probing table
@@ -102,5 +104,14 @@ public class LinearProbingHashST<Key, Value> {
 
         if (N > 0 && N == M / 8)
             resize(M / 2);
+    }
+
+    public Iterable<Key> keys() {
+        Queue<Key> queue = new Queue<Key>();
+        for (int i = 0; i < M; i++) {
+            if (keys[i] != null)
+                queue.enqueue(keys[i]);
+        }
+        return queue;
     }
 }
