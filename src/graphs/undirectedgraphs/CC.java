@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.Graph;
 
 public class CC {
     private boolean[] marked;
-    private int[] id;
+    private int[] id; // component identifier for each vertex.
     private int count; // number of connected components.
 
     public CC(Graph G) {
