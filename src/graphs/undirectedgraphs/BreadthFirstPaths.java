@@ -9,13 +9,11 @@ public class BreadthFirstPaths {
     private boolean[] marked; // Is a shortest path to this vertex known?
     private int[] edgeTo; // last vertex on known path to this vertex.
     private int[] distTo; // number of edges shortest s-v path
-    private final int s; // source
 
     public BreadthFirstPaths(Graph G, int s) {
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
         distTo = new int[G.V()];
-        this.s = s;
         bfs(G, s);
     }
 
@@ -53,10 +51,11 @@ public class BreadthFirstPaths {
             return null;
         }
         Stack<Integer> path = new Stack<Integer>();
-        for (int x = v; x != s; x = edgeTo[x]) {
+        int x;
+        for (x = v; distTo[x] != 0; x = edgeTo[x]) {
             path.push(x);
         }
-        path.push(s);
+        path.push(x);
         return path;
     }
 }
