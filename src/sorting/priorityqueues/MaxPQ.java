@@ -4,6 +4,11 @@ public class MaxPQ<Key extends Comparable<Key>>
 {
     private Key[] pq;    // heap-ordered complete binary tree
     private int N = 0;   // in pq[1..N] with pq[0] unused
+    
+    public MaxPQ(int maxN)
+    {
+        pq = (Key[]) new Comparable[maxN + 1];
+    }
 
     private void swim(int k)
     {
@@ -36,11 +41,6 @@ public class MaxPQ<Key extends Comparable<Key>>
         Key t = pq[i];
         pq[i] = pq[j];
         pq[j] = t;
-    }
-
-    public MaxPQ(int maxN)
-    {
-        pq = (Key[]) new Comparable[maxN + 1];
     }
 
     public boolean isEmpty()
