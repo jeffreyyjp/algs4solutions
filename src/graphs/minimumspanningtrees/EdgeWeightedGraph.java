@@ -4,6 +4,8 @@ import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Edge;
 
 public class EdgeWeightedGraph {
+    private static final String NEWLINE = System.getProperty("line.separator");
+
     private final int V; // number of vertices
     private int E; // number of edges
     private Bag<Edge>[] adj; // adjacency lists
@@ -47,5 +49,18 @@ public class EdgeWeightedGraph {
             }
         }
         return b;
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(V + " " + E + NEWLINE);
+        for (int v = 0; v < V; v++) {
+            s.append(v + ": ");
+            for (Edge e : adj[v]) {
+                s.append(e + " ");
+            }
+            s.append(NEWLINE);
+        }
+        return s.toString();
     }
 }
