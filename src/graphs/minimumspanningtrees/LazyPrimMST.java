@@ -6,6 +6,7 @@ import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
 
 public class LazyPrimMST {
+    private double weight;
     private boolean[] marked; // MST vertices
     private Queue<Edge> mst; // MST edges
     private MinPQ<Edge> pq; // crossing (and ineligible) edges
@@ -23,6 +24,7 @@ public class LazyPrimMST {
                 continue; // Skip if ineligible
             }
             mst.enqueue(e); // Add edge to tree
+            weight += e.weight();
             if (!marked[v]) {
                 visit(G, v); // Add vertex to tree
             }
@@ -47,10 +49,6 @@ public class LazyPrimMST {
     }
 
     public double weight() {
-        double weight = 0;
-        for (Edge e : mst) {
-            weight += e.weight();
-        }
         return weight;
     }
 }
