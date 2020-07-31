@@ -15,10 +15,10 @@ public class PrimMST {
         edgeTo = new Edge[G.V()];
         distTo = new double[G.V()];
         marked = new boolean[G.V()];
+        pq = new IndexMinPQ<Double>(G.V());
         for (int v = 0; v < G.V(); v++) {
             distTo[v] = Double.POSITIVE_INFINITY;
         }
-        pq = new IndexMinPQ<Double>(G.V());
 
         distTo[0] = 0.0;
         pq.insert(0, 0.0); // Initialize pq with 0, weight 0.
@@ -39,29 +39,30 @@ public class PrimMST {
                 // Edge e is new best connection from tree to w.
                 edgeTo[w] = e;
                 distTo[w] = e.weight();
-            }
-            if (pq.contains(w)) {
-                pq.changeKey(w, distTo[w]);
-            } else {
-                pq.insert(w, distTo[w]);
+                if (pq.contains(w)) {
+                    pq.changeKey(w, distTo[w]);
+                } else {
+                    pq.insert(w, distTo[w]);
+                }
             }
         }
     }
 
     public Iterable<Edge> edges() {
-        Queue<Edge> q = new Queue<Edge>();
-        for (Edge e : edgeTo) {
+        Queue<Edge> mst = new Queue<Edge>();
+        for (int v = 0; v < edgeTo.length; v++) {
+            Edge e = edgeTo[v];
             if (e != null) {
-                q.enqueue(e);
+                mst.enqueue(e);
             }
         }
-        return q;
+        return mst;
     }
 
     public double weight() {
-        double weight = 0;
-        for (double w : distTo) {
-            weight += w;
+        double weight = 0.0;
+        for (Edge e : edges()) {
+            weight += e.weight();
         }
         return weight;
     }
