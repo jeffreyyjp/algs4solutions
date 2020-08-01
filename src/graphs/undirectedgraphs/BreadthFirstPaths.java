@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
 public class BreadthFirstPaths {
-    private static final int INFINITY = Integer.MAX_VALUE;
     private boolean[] marked; // Is a shortest path to this vertex known?
     private int[] edgeTo; // last vertex on known path to this vertex.
     private int[] distTo; // number of edges shortest s-v path
@@ -20,7 +19,7 @@ public class BreadthFirstPaths {
     private void bfs(Graph G, int s) {
         Queue<Integer> queue = new Queue<Integer>();
         for (int v = 0; v < G.V(); v++) {
-            distTo[v] = INFINITY;
+            distTo[v] = Integer.MAX_VALUE;
         }
         distTo[s] = 0;
         marked[s] = true; // Mark the source.
