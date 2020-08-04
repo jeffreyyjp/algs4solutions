@@ -21,8 +21,8 @@ public class Topological {
         return order;
     }
 
-    public boolean isDAG() {
-        return order == null;
+    public boolean hasOrder() {
+        return order != null;
     }
 
     public static void main(String[] args) {
