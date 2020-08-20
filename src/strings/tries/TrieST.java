@@ -127,7 +127,7 @@ public class TrieST<Value> {
                 prefix.deleteCharAt(prefix.length() - 1);
             }
         } else {
-            collect(x.next[c], prefix, pattern, q);
+            collect(x.next[c], prefix.append(c), pattern, q);
             prefix.deleteCharAt(prefix.length() - 1);
         }
     }
