@@ -122,7 +122,7 @@ public class TrieST<Value> {
 
         char c = pattern.charAt(d);
         if (c == '.') {
-            for (char ch = 0; ch < R; c++) {
+            for (char ch = 0; ch < R; ch++) {
                 collect(x.next[ch], prefix.append(ch), pattern, q);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
