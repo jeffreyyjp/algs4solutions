@@ -73,7 +73,7 @@ public class SeparateChainingHashST<Key, Value> {
 
         int i = hash(key);
         if (!st[i].contains(key)) N++;
-        st[hash(key)].put(key, val);
+        st[i].put(key, val);
     }
 
     public void delete(Key key) {
